@@ -1,5 +1,5 @@
 # disable sudo for container build.
-sudo: required
+sudo: false
 
 # Enabling test on Linux and OS X
 os:
@@ -26,6 +26,10 @@ env:
     - TASK=cpp_test
 
 matrix:
+  include:
+    - os: linux
+      env: TASK=java_test
+      sudo: required
   exclude:
     - os: osx
       env: TASK=lint
@@ -33,6 +37,8 @@ matrix:
       env: TASK=cmake_test
     - os: linux
       env: TASK=r_test
+    - os: linux
+      env: TASK=java_test
     - os: osx
       env: TASK=python_lightweight_test
     - os: osx
