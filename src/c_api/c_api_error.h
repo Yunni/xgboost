@@ -15,6 +15,7 @@
 /*! \brief every function starts with API_BEGIN();
      and finishes with API_END() or API_END_HANDLE_ERROR */
 #define API_END() } catch(dmlc::Error &_except_) { return XGBAPIHandleException(_except_); } return 0;  // NOLINT(*)
+#define CHECK_HANDLE() if (handle == nullptr) LOG(FATAL) << "Booster has not been intialized or has alrady been disposed.";
 /*!
  * \brief every function starts with API_BEGIN();
  *   and finishes with API_END() or API_END_HANDLE_ERROR
